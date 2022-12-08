@@ -9,7 +9,7 @@ const Todo = (Sequelize, DataTypes) => {
     "todo",
     {
       id: {
-        type: DataTypes.INTIGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
