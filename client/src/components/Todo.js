@@ -1,16 +1,42 @@
-// 1. 함수형 컴포넌트
-// 2. input(checkbox) 와 label을 랜더링하는 컴포넌트
-// 3. App (부모 컴퍼넌트)에서 Todo (자식 컴포넌트)를 랜더링
-
 import { useState } from "react";
 
 const Todo = ({ Mytodo, deleteItem }) => {
   const { id, title, done } = Mytodo;
-
   const [todoItem, setTodoItem] = useState(Mytodo);
+  const [readOnly, setReadOnly] = useState(true);
 
   const onDeleteButtonClick = () => {
     deleteItem(todoItem.id);
+  };
+
+  // 사용자가 키보드 입력할 때마다 todoItem.title을 새 값으로 변경
+  const editEventHandler = (e) => {
+    // rest: id, done 정보
+    const { title, ...rest } = todoItem;
+
+    setTodoItem({
+      title: e.target.value,
+      ...rest,
+    });
+  };
+
+  // title input 클릭 시 readOnly state를 false로 변경
+  const offReadOnlyMode = () => {
+    setReadOnly(false);
+  };
+
+  // title input에서 enter 키 입력 시 readOnly state를 true로 변경
+  const enterKeyEventHandler = (e) => {
+    if (e.key === "Enter") {
+      setReadOnly(true);
+    }
+  };
+
+  // checkbox 업데이트
+  // done: true -> false / false -> true
+  const checkboxEventHandler = () => {
+    todoItem.done = !todoItem.done;
+    setTodoItem(todoItem);
   };
 
   return (
@@ -21,8 +47,16 @@ const Todo = ({ Mytodo, deleteItem }) => {
         id={`todo${id}`}
         value={`todo${id}`}
         defaultChecked={done}
+        onChange={checkboxEventHandler}
       />
-      <label htmlFor={`todo${id}`}>{title}</label>
+      <input
+        type="text"
+        value={todoItem.title}
+        onChange={editEventHandler}
+        onClick={offReadOnlyMode}
+        onKeyPress={enterKeyEventHandler}
+        readOnly={readOnly}
+      />
 
       <button onClick={onDeleteButtonClick}>DELETE</button>
     </div>
