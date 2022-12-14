@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const AddTodo = ({ addItem }) => {
   const [todoItem, setTodoItem] = useState({
@@ -28,7 +30,7 @@ const AddTodo = ({ addItem }) => {
         placeholder="Add your new Todo"
       />
       <button className="addBtn" onClick={onButtonClick}>
-        ADD
+        <FontAwesomeIcon icon={faPlus} />
       </button>
     </div>
   );

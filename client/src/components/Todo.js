@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Todo = ({ item, deleteItem }) => {
   const { id, title, done } = item;
@@ -64,11 +66,9 @@ const Todo = ({ item, deleteItem }) => {
         readOnly={readOnly}
       />
 
-      <button
-        className="delBtn"
-        id="delBtn"
-        onClick={onDeleteButtonClick}
-      ></button>
+      <button className="delBtn" id="delBtn" onClick={onDeleteButtonClick}>
+        <FontAwesomeIcon icon={faTrashCan} />
+      </button>
       <label htmlFor="delBtn"></label>
     </div>
   );
