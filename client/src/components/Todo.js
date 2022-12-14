@@ -34,9 +34,12 @@ const Todo = ({ Mytodo, deleteItem }) => {
 
   // checkbox 업데이트
   // done: true -> false / false -> true
-  const checkboxEventHandler = () => {
-    todoItem.done = !todoItem.done;
-    setTodoItem(todoItem);
+  const checkboxEventHandler = (e) => {
+    const { done, ...rest } = todoItem;
+    setTodoItem({
+      done: e.target.checked,
+      ...rest,
+    });
   };
 
   return (
