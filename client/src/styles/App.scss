@@ -1,0 +1,80 @@
+@import "./utils";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $color-secondary-200;
+  overflow-x: hidden;
+}
+
+.App {
+  min-height: 100vh;
+  width: $width-md;
+  margin: 0 auto;
+  background-color: $color-secondary-100;
+
+  header {
+    background-color: $color-primary-400;
+    color: $color-secondary-100;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    padding: 16px 0;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .left-todos {
+    @include notice();
+    padding: 0 24px;
+    margin-bottom: 24px;
+  }
+
+  .empty-todos {
+    @include notice();
+    text-align: center;
+  }
+
+  .AddTodo {
+    width: 100%;
+    padding: 36px 24px;
+    display: flex;
+
+    input {
+      margin-right: 12px;
+      @include input($color-primary-400);
+    }
+
+    button {
+      @include button($color-primary-400, $color-secondary-100);
+    }
+  }
+
+  .Todo {
+    padding: 8px 24px;
+    display: flex;
+
+    input[type="checkbox"] {
+      width: 24px;
+      height: 24px;
+      margin: auto 0;
+    }
+
+    input[type="text"] {
+      @include input($color-secondary-200);
+      margin-left: 12px;
+      margin-right: 12px;
+    }
+
+    button {
+      @include button($color-secondary-200, $color-secondary-400);
+    }
+  }
+}
+
+@media (max-width: $width-md) {
+  .App {
+    width: 90vw;
+  }
+} ;

@@ -1,0 +1,91 @@
+@import "./utils.scss";
+
+body {
+  background-image: url("./tree2.jpg");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App {
+  .title {
+    color: white;
+    text-align: center;
+  }
+}
+
+.Todo:hover {
+  transform: scale(1.1);
+}
+
+.Todo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  margin: 20px auto;
+  border-radius: 10px;
+  background-color: white;
+  padding: 10px;
+  box-shadow: 3px 5px 6px gray;
+
+  .hideBtn {
+    display: none;
+  }
+
+  .list {
+    margin: 0 20px;
+    height: 40px;
+    border: none;
+    font-size: 30px;
+  }
+
+  input[type="checkbox"] + label {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 3px solid #707070;
+    border-radius: 50%;
+    position: relative;
+    background-color: white;
+  }
+
+  input[type="checkbox"]:checked + label::after {
+    content: "✔";
+    font-size: 25px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .delBtn {
+    background: url("./trash.png");
+    background-size: cover;
+    border: none;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+  }
+}
+
+.AddTodo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .add {
+    background-color: transparent;
+    border-radius: 10px;
+    width: 100%;
+    font-size: 40px;
+    border: 2px solid rgb(192, 191, 191);
+  }
+
+  .addBtn {
+    display: none;
+  }
+}

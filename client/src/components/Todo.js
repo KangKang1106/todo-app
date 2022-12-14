@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-const Todo = ({ Mytodo, deleteItem }) => {
-  const { id, title, done } = Mytodo;
-  const [todoItem, setTodoItem] = useState(Mytodo);
+const Todo = ({ item, deleteItem }) => {
+  const { id, title, done } = item;
+  const [todoItem, setTodoItem] = useState(item);
   const [readOnly, setReadOnly] = useState(true);
 
   const onDeleteButtonClick = () => {
@@ -45,6 +45,7 @@ const Todo = ({ Mytodo, deleteItem }) => {
   return (
     <div className="Todo">
       <input
+        className="hideBtn"
         type="checkbox"
         name={`todo${id}`}
         id={`todo${id}`}
@@ -52,7 +53,9 @@ const Todo = ({ Mytodo, deleteItem }) => {
         defaultChecked={done}
         onChange={checkboxEventHandler}
       />
+      <label className="checkBtn" htmlFor={`todo${id}`}></label>
       <input
+        className="list"
         type="text"
         value={todoItem.title}
         onChange={editEventHandler}
@@ -61,7 +64,12 @@ const Todo = ({ Mytodo, deleteItem }) => {
         readOnly={readOnly}
       />
 
-      <button onClick={onDeleteButtonClick}>DELETE</button>
+      <button
+        className="delBtn"
+        id="delBtn"
+        onClick={onDeleteButtonClick}
+      ></button>
+      <label htmlFor="delBtn"></label>
     </div>
   );
 };

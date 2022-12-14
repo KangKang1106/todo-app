@@ -20,13 +20,16 @@ const AddTodo = ({ addItem }) => {
   return (
     <div className="AddTodo">
       <input
+        className="add"
         type="text"
         value={todoItem.title}
         onChange={(e) => setTodoItem({ title: e.target.value })}
         onKeyPress={onKeyPress}
         placeholder="Add your new Todo"
       />
-      <button onClick={onButtonClick}>ADD</button>
+      <button className="addBtn" onClick={onButtonClick}>
+        ADD
+      </button>
     </div>
   );
 };

@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import Todo from "./components/Todo";
 import AddTodo from "./components/AddTodo";
+// import "./styles/Todo.scss";
+import "./styles/App.scss";
 
 const App = () => {
   const [todoItems, setTodoItems] = useState([
@@ -37,10 +39,17 @@ const App = () => {
 
   return (
     <div className="App">
+      <header>😀Sean Todo App</header>
       <AddTodo addItem={addItem} />
-      {todoItems.map((a) => {
-        return <Todo key={a.id} Mytodo={a} deleteItem={deleteItem} />;
-      })}
+      <div className="left-todos">🚀 {todoItems.length} Todos</div>
+      {todoItems.length > 0 ? (
+        todoItems.map((item) => {
+          // console.log(item); // {id: 1, title: 'My Todo1', done: false}
+          return <Todo key={item.id} item={item} deleteItem={deleteItem} />;
+        })
+      ) : (
+        <p className="empty-todos">Todo를 추가해주세요🔥</p>
+      )}
     </div>
   );
 };
