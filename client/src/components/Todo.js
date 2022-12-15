@@ -2,7 +2,7 @@ import { useState } from "react";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Todo = ({ item, deleteItem }) => {
+const Todo = ({ item, deleteItem, updateItem }) => {
   const { id, title, done } = item;
   const [todoItem, setTodoItem] = useState(item);
   const [readOnly, setReadOnly] = useState(true);
@@ -31,6 +31,7 @@ const Todo = ({ item, deleteItem }) => {
   const enterKeyEventHandler = (e) => {
     if (e.key === "Enter") {
       setReadOnly(true);
+      updateItem(todoItem);
     }
   };
 
@@ -42,6 +43,7 @@ const Todo = ({ item, deleteItem }) => {
       done: e.target.checked,
       ...rest,
     });
+    updateItem({ done: e.target.checked, ...rest });
   };
 
   return (
