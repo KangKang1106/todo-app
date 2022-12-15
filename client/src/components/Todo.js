@@ -8,7 +8,7 @@ const Todo = ({ item, deleteItem }) => {
   const [readOnly, setReadOnly] = useState(true);
 
   const onDeleteButtonClick = () => {
-    deleteItem(todoItem.id);
+    deleteItem(todoItem);
   };
 
   // 사용자가 키보드 입력할 때마다 todoItem.title을 새 값으로 변경
